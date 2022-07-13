@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/chzwei/xlc/lmy/public/test'
+let g:netrw_dirhist_2='/home/chzwei/xlc/lmy/public/test/cao'
+let g:netrw_dirhist_3='/home/chzwei/xlc/lmy/public/test'
+let g:netrw_dirhist_4='/home/chzwei/xlc/lmy/public/test/cao'
+let g:netrw_dirhist_5='/home/chzwei/xlc/lmy/public/test/cao/goods'
+let g:netrw_dirhist_6='/home/chzwei/xlc/lmy/lib'
+let g:netrw_dirhist_7='/home/chzwei/xlc/lmy/lib/filter'
+let g:netrw_dirhist_8='/home/chzwei/tmp'
+let g:netrw_dirhist_9='/usr/share/vim/vim74/doc'

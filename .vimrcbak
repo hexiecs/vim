@@ -1,0 +1,179 @@
+" set coding
+set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fenc=utf-8 
+set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936 
+
+set backspace=indent,eol,start
+set nocompatible				" be iMproved, required
+" set mouse=a						" mouse useful
+set nu							" set number
+set nocp						
+set nobackup					" no backup
+set noerrorbells				" no voice
+set showmatch					" show match of () {} []
+set ignorecase					" ignore case in search
+"set cursorline					" hightlight current line
+"set cursorcolumn				" hightlight current collum
+"set autochdir					" auto change dir
+
+set incsearch
+set hlsearch
+
+set wrap						" 不要自动换行
+set autoindent					"  autoindent 是自动缩进, cindent是特别针对C语言语法自动缩进
+set smartindent 
+set cindent 
+set tabstop=4					" 制表符为4 
+set softtabstop=4 
+set shiftwidth=4 
+"set expandtab					" 空格替代tab
+
+set scrolloff=3					" 光标移动到buffer的顶部和底部时保持3行距离 
+set cmdheight=2					" 命令行（在状态行下）的高度，默认为1，这里是2
+set statusline=%F%m%r%h%w[%p%%] " 我的状态行显示的内容
+set laststatus=2				" 总是显示状态行 
+set	foldmethod=indent
+set nofoldenable
+
+" key map
+"imap jk <ESC>:w<CR>				" 按jk退出编辑状态
+"map wq <ESC>:wq<CR>
+"imap wq <ESC>:wq<CR>
+"map qq <ESC>:q!<CR>
+"imap qq <ESC>:q!<CR>
+map ,, <ESC>:tabprevious<CR>                                                                                                                                                                                
+map .. <ESC>:tabnext<CR>
+map gn <ESC>:tabnext<CR>
+map gm <ESC><C-W><C-W>
+map ,cp <ESC>:set mouse=c<CR>:set nonu<CR>
+map ,np <ESC>:set mouse=a<CR>:set nu<CR>
+map ,sh <ESC>:call OpenShell()<CR>:r! 
+imap ,sh <ESC>:call OpenShell()<CR>:r! 
+map ,tl <ESC>:tselect <C-R>=expand("<cword>")<CR><CR>
+map ,rp <ESC>:%s/<C-R>=expand("<cword>")<CR>/
+map ,et <Esc>:tabnew <C-R>=expand("<cfile>")<CR><CR>
+map ,ev <Esc>:vs <C-R>=expand("<cfile>")<CR><CR>
+map ,es <Esc>:split <C-R>=expand("<cfile>")<CR><CR>
+map ,gp <Esc>:Grep -i <C-R>=expand("<cword>")<CR><CR>
+
+
+map <tab> <ESC>:tabnext<CR>
+map	<F2> <ESC><C-W><C-W>
+map <F3> <ESC>:Tagbar<CR>
+map <F4> <ESC>:NERDTreeToggle<CR>
+map <F12> <ESC>:!ctags -R --c++-kinds=+px --fields=+aiKSz --extra=+q .<CR> 
+
+"pathogen
+filetype off					" required
+call pathogen#infect()
+filetype plugin on
+
+"theme
+syntax enable
+set t_Co=256
+let g:airline_theme="dark"
+" let g:airline_theme="light"
+" set background=dark
+" set background=light
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
+syntax on						" 语法高亮
+
+"let g:AutoOpenWinManager = 1
+let g:NERDTreeDirArrows = 1
+let g:nerdtree_tabs_autoclose = 0
+let g:bufExplorerSplitVertSize = 30
+let g:bufExplorerMaxHeight=30
+let g:winManagerWindowLayout = "FileExplorer|BufExplorer"
+let g:winManagerWidth = 30
+
+
+"easymotion
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_use_upper = 1			" Use uppercase target labels and type as a lower case
+let g:EasyMotion_smartcase = 1			" type `l` and match `l`&`L`
+let g:EasyMotion_use_smartsign_us = 1	" Smartsign (type `3` and match `3`&`#`)
+
+"easygrep
+let g:EasyGrepMode = 2					" All:0, Open Buffers:1, TrackExt:2
+"let g:EasyGrepCommand = 0				" Use vimgrep:0, grepprg:1
+let g:EasyGrepRecursive  = 1			" Recursive searching
+let g:EasyGrepIgnoreCase = 1			" not ignorecase:0
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+"let g:EasyGrepOpenWindowOnMatch = 0
+
+"ctrlp
+let g:ctrlp_by_filename = 1
+"let g:ctrlp_working_path_mode = '0'
+"let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:200'
+let g:ctrlp_regexp = 0
+"let g:ctrlp_extensions = ['buffertag', 'dir', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+let g:ctrlp_prompt_mappings = { 
+	\ 'AcceptSelection("e")': ['<c-t>', '<2-LeftMouse>'],
+	\ 'AcceptSelection("t")': ['<cr>', '<RightMouse>'],
+	\ }
+map ,pp <ESC>:CtrlP<CR>
+map ,pd <ESC>:CtrlPDir<CR>
+map ,pu <ESC>:CtrlPUndo<CR>
+map ,pl <ESC>:CtrlPLine<CR>
+map ,pc <ESC>:CtrlPChangeAll<CR>
+map ,pb <ESC>:CtrlPBookmarkDir<CR>
+map ,pm <ESC>:CtrlPMRU<CR>
+
+
+"acp
+let g:acp_enableAtStartup = 1
+let g:acp_completeoptPreview = 0
+let g:acp_ignorecaseOption = 1
+let g:acp_behaviorKeywordCommand = "\<C-n>"
+let g:acp_behaviorKeywordLength = 1
+
+"omnicppcomplete 
+let OmniCpp_MayCompleteDot = 1		" autocomplete with .
+let OmniCpp_MayCompleteArrow = 1	" autocomplete with ->
+let OmniCpp_MayCompleteScope = 1	" autocomplete with ::
+let OmniCpp_SelectFirstItem = 2		" select first item
+let OmniCpp_NamespaceSearch = 2		" search namespaces in this and included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
+let OmniCpp_GlobalScopeSearch=1		" enable the global scope search
+let OmniCpp_DisplayMode=1			" Class scope completion mode: always show all members
+let OmniCpp_DefaultNamespaces=["std"]
+
+" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif  " 自动关闭补全窗口 
+set completeopt=menu,longest
+set tags+=./deps_tags
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" autocmd
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif " auto go last edit
+
+" dbext
+"let g:dbext_default_profile_mySQL = 'type=MYSQL:user=dev:passwd=dev:dbname=tvshake_biz'
+let g:dbext_default_profile_mySQL_DBI = 'type=DBI:user=dev:passwd=dev:driver=mysql:conn_parms=database=tvshake_biz;host=10.198.30.107:port=9340'
+
+function OpenShell()
+	if bufname(".vim_sh") == ""
+		execute "belowright split ~/.vim_sh"	
+	else
+		execute "buffer ".bufnr(bufname(".vim_sh"))
+	endif
+	execute append(line('$'), "")
+	execute append(line('$'), "============================ shell ============================")
+	execute append(line('$'), "pwd: ".getcwd())
+	execute append(line('$'), "")
+	execute "$"
+endfunction
+
